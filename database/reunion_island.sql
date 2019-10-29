@@ -1,5 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+hiking-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1idid
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
@@ -32,3 +32,12 @@ CREATE TABLE IF NOT EXISTS `hiking` (
   `height_difference` int(6) NOT NULL COMMENT 'in m',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+
+-- INSERT INTO hiking( name, difficulty, distance, duration, height_difference) VALUES("La traversée du Grand Brulé", "Très difficile", 15, '07:00:00', 100);
+I-- NSERT INTO hiking( name, difficulty, distance, duration, height_difference) VALUES("Le grand tour de la Plaine des Sables par le Piton Rouge et l'Oratoire Sainte-Thérèse", "Facile", 15, '05:00:00', 350), ('La boucle du Grand Cap au Brisant par le Sentier des Laves', 'moyen', 5.8, '02:00:00', 120), ('Cassé de la Rivière de l\'Est depuis le Pas de Bellecombe et par le Nez Coupé de Sainte-Rose', 'Difficile', 17.5, '06:30:00', 750),(' La grotte de la Ravine la Source depuis la Plaine des Sables', 'Très difficile', 15.6, '04:30:00', 440);
+
+
+
