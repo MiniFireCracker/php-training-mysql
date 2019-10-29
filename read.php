@@ -46,7 +46,7 @@
         <td><?=$hikingTracks['distance'] ?> km</td>
         <td><?=$hikingTracks['duration'] ?></td>
         <td><?=$hikingTracks['height_difference'] ?> m </td> 
-        <td><a href="/update.php?id=<?= $hikingTracks['id'] ?>"> Modifier </a></td>
+        <td><a href="/update.php?id=<?= $hikingTracks['id'] ?>"> Modifier </a> <a href="/delete.php?id=<?= $hikingTracks['id'] ?>"> Supprimer </a></td>
         </tr>         
       <?php } ?>
     </tbody>
