@@ -24,7 +24,11 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 		$stmt->execute([ $_POST['name'], $_POST['difficulty'], $_POST['distance'], $_POST['duration'], $_POST['height_difference'] ]);
 	*/
 		$stmt= $pdo->prepare('INSERT INTO hiking(name, difficulty, distance, duration, height_difference)VALUES(:name, :difficulty, :distance, :duration, :height_difference) ;');
-		$stmt->execute([ 'name' => $_POST['name'], 'difficulty' => $_POST['difficulty'], 'distance'=> $_POST['distance'], 'duration'=> $_POST['duration'], 'height_difference'=> $_POST['height_difference'] ]);
+		$stmt->execute([ 'name' => $_POST['name'],
+						 'difficulty' => $_POST['difficulty'],
+						 'distance'=> $_POST['distance'],
+						 'duration'=> $_POST['duration'],
+						 'height_difference'=> $_POST['height_difference'] ]);
 
 		$msgForUser= "Merci! Grace à vous nous pouvons maintenant proposer à nos utilisateurs une nouvelle randonnée";
 

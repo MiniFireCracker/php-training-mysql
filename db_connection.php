@@ -3,7 +3,6 @@ session_start ();
 
 if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 
-
       $databaseName= 'reunion_island';
       $serverName= 'localhost';
       $userName= 'root';
@@ -15,25 +14,4 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
       catch(PDOException $e){
         echo "Failed to establish connection" . $e->getMessage();
       }
-
-      //var_dump($_GET);
-      //echo $_GET['id'];
-
-     $stmt = $pdo->prepare('DELETE FROM hiking WHERE id=:id ;');
-     	if(!$stmt->execute([ ':id'=>$_GET['id'] ]) )
-     	{
-      		print_r( $stmt->errorInfo() );
-      		//header('Location: /login.php');
-     	}
-  
-	
-    // $_GET["id"]        ;header('Location: /read.php');
-
-		else
-		{
-			header('Location: /read.php');
-
-		}
-}else{
-	header('Location: /login.php');
-}
+   

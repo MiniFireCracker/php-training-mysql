@@ -42,13 +42,19 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 					 height_difference =:height_difference
 					 WHERE id =:id ;');
 
-		$stmt->execute([ ':name'=>$_POST['name'],
+		if( !$stmt->execute([ ':name'=>$_POST['name'],
 						 ':difficulty'=>$_POST['difficulty'],
 						 ':distance'=>$_POST['distance'], 
 						 ':duration'=>$_POST['duration'],
 						 ':height_difference'=>$_POST['height_difference'],
 						 ':id'=>$_GET['id'] 
-					   ]);
+					   ]))
+		{
+      		print_r( $stmt->errorInfo() );
+      	};
+  
+		//}else{
+		//	header('Location: /update.php');};
 
 
 /*
@@ -112,12 +118,21 @@ $stmt->execute();
 		<div>
 			<label for="difficulty">Difficulté</label>
 			<select name="difficulty">
-				<option value='<?= $selectedTrack['distance']?>' selected='selected'> <?= $selectedTrack['difficulty'] ?> </option>
-				<option value="très facile">Très facile</option>
-				<option value="facile">Facile</option>
-				<option value="moyen">Moyen</option>
-				<option value="difficile">Difficile</option>
-				<option value="très difficile">Très difficile</option>
+				<option value='<?= $selectedTrack['difficulty']?>' selected='selected'> <?= $selectedTrack['difficulty'] ?> </option>
+				<?php $possibleOptionValue=["très facile", "facile", "moyen","difficile","très difficile"];
+					function findAllValuesExceptTheOneInUse($val){
+						return $val !== $selectedTrack['difficulty'];
+					}
+
+					$otherValues= array_filter($possibleOptionValue, findAllValuesExceptTheOneInUse);
+					print_r($otherValues);
+
+					foreach($otherValues as $otherValue):
+				 ?>
+				 <option value=<?= $otherValue ?> > <?= $otherValue  ?> </option>
+				
+
+				<?php endforeach; ?>
 			</select>
 		</div>
 		

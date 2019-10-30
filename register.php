@@ -22,15 +22,15 @@ if( isset($_POST) && (!empty($_POST))){
 		foreach( $users as $user){
 			if($user['mail'] == $_POST['mail']){
 				return $informUser= "L'email que vous avez entré est déjà utilisé. Veuillez vérifier que vous n'avez pas déjà de compte.";
-			}else{
+			}}//}else{
 
 				$stmt= $pdo->prepare('INSERT INTO user(lastname, firstname, mail, password )VALUES(:lastname, :firstname, :mail, :password) ;');
 
 				$stmt->execute([ 'lastname' => $_POST['lastname'], 'firstname' => $_POST['firstname'], 'mail'=> $_POST['mail'], 'password'=> password_hash($_POST['password'], PASSWORD_DEFAULT) ]);
 
 				$informUser= "Félicitation. Votre compte a bien été crée";
-			}
-		}
+			//}
+		//}
 }else{
 	$informUser= "Formulaire incomplet. Veuillez remplir tous les champs.";
 	 }
