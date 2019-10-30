@@ -1,4 +1,7 @@
 <?php
+session_start ();
+
+if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 
       $databaseName= 'reunion_island';
       $serverName= 'localhost';
@@ -20,7 +23,7 @@
 	/*	$stmt= $pdo->prepare("INSERT INTO hiking(name, difficulty, distance, duration, height_difference)VALUES(?, ?, ?, ?, ?) ;");
 		$stmt->execute([ $_POST['name'], $_POST['difficulty'], $_POST['distance'], $_POST['duration'], $_POST['height_difference'] ]);
 	*/
-		$stmt= $pdo->prepare("INSERT INTO hiking(name, difficulty, distance, duration, height_difference)VALUES(:name, :difficulty, :distance, :duration, :height_difference) ;");
+		$stmt= $pdo->prepare('INSERT INTO hiking(name, difficulty, distance, duration, height_difference)VALUES(:name, :difficulty, :distance, :duration, :height_difference) ;');
 		$stmt->execute([ 'name' => $_POST['name'], 'difficulty' => $_POST['difficulty'], 'distance'=> $_POST['distance'], 'duration'=> $_POST['duration'], 'height_difference'=> $_POST['height_difference'] ]);
 
 		$msgForUser= "Merci! Grace à vous nous pouvons maintenant proposer à nos utilisateurs une nouvelle randonnée";
@@ -42,6 +45,8 @@
 </head>
 <body>
 	<a href="/read.php">Liste des données</a>
+	<a href="/logout.php">Se déconnecter </a>
+
 	<h1>Ajouter</h1>
 	<form action="/create.php" method="post">
 		<div>
@@ -79,3 +84,12 @@
 	<?php endif; ?>
 </body>
 </html>
+
+<?php
+
+}else{
+	header('Location: /login.php');
+
+}
+
+?>

@@ -1,5 +1,8 @@
 <?php
-/**** Supprimer une randonnée ****/
+session_start ();
+
+if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
+
 
       $databaseName= 'reunion_island';
       $serverName= 'localhost';
@@ -20,3 +23,12 @@
     header('Location: /read.php');
 
       ?>
+
+<?php
+
+}else{
+	header('Location: /login.php');
+
+}
+
+?>

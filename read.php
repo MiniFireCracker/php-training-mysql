@@ -24,6 +24,7 @@
       ?>
 
     <h1>Liste des randonnées</h1>
+    <a href="/logout.php">Se déconnecter </a>
     <table>
       <thead>
         <tr>
