@@ -35,12 +35,12 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 		$stmt->execute([ $_POST['name'], $_POST['difficulty'], $_POST['distance'], $_POST['duration'], $_POST['height_difference'], $_GET['id'] ]);
 		*/
 		
-		$stmt= $pdo->prepare('UPDATE hiking SET name = :name ,
-					 difficulty = :difficulty ,
-					 distance = :distance ,
-					 duration= :duration ,
-					 height_difference = :height_difference
-					 WHERE id = :id ;');
+	$stmt= $pdo->prepare('UPDATE hiking SET name =:name,
+					 difficulty =:difficulty,
+					 distance =:distance,
+					 duration=:duration,
+					 height_difference =:height_difference
+					 WHERE id =:id ;');
 
 		$stmt->execute([ ':name'=>$_POST['name'],
 						 ':difficulty'=>$_POST['difficulty'],
@@ -49,6 +49,23 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 						 ':height_difference'=>$_POST['height_difference'],
 						 ':id'=>$_GET['id'] 
 					   ]);
+
+
+/*
+		////////////////////           version stack //////////////////
+
+$stmt= $pdo->prepare('UPDATE hiking SET name =? ,
+					 difficulty =? ,
+					 distance =? ,
+					 duration=? ,
+					 height_difference =?
+					 WHERE id =?');
+
+$stmt->bindParam($_POST['name'], $_POST['difficulty'], $_POST['distance'], $_POST['duration'], $_POST['height_difference'], $_GET['id'] );
+$stmt->execute();
+/*
+
+
 		
 		/*
 		$stmt= $pdo->prepare('UPDATE hiking SET name = :name , difficulty = :difficulty , distance = :distance , duration= :duration , height_difference = :height_difference WHERE id = :id ;');
@@ -63,7 +80,7 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 		$stmt->execute();
 		*/
 
-		$msgForUser= "Merci! Les détails de la randonée ont bien été modifié";
+		$msgForUser= "Merci! Les détails de la randonée ont bien été modifiés";
 
 	}else{
 		$msgForUser= "Formulaire incomplet. Veuillez remplir tous les champs.";

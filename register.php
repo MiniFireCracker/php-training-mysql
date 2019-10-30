@@ -26,7 +26,7 @@ if( isset($_POST) && (!empty($_POST))){
 
 				$stmt= $pdo->prepare('INSERT INTO user(lastname, firstname, mail, password )VALUES(:lastname, :firstname, :mail, :password) ;');
 
-				$stmt->execute([ 'lastname' => $_POST['lastname'], 'firstname' => $_POST['firstname'], 'mail'=> $_POST['mail'], 'password'=> $_POST['password'] ]);
+				$stmt->execute([ 'lastname' => $_POST['lastname'], 'firstname' => $_POST['firstname'], 'mail'=> $_POST['mail'], 'password'=> password_hash($_POST['password'], PASSWORD_DEFAULT) ]);
 
 				$informUser= "Félicitation. Votre compte a bien été crée";
 			}

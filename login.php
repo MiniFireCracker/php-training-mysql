@@ -21,16 +21,17 @@
 		var_dump($users);
 
 		foreach( $users as $user){
-			if($user['mail'] == $_POST['mail']){
+			if( ($user['mail'] == $_POST['mail']) && ( password_verify($_POST['password'], $user['password'] )) ){
 				session_start ();
 				$_SESSION['mail'] = $_POST['mail'];
 				$_SESSION['firstname'] = $user['firstname'];
 
 				header('Location: /read.php');
 			}else{
-				$informUser= "Aucun compte n'est associé à cet e-mail.";
+				$informUser= "Echec. Email ou mot de passe incorrect.";
 			}
 		}
+
 	  }else{
 		$informUser= "Formulaire incomplet. Veuillez remplir tous les champs.";
 	       }
