@@ -1,5 +1,5 @@
 <?php
-
+/*
     $databaseName= 'reunion_island';
       $serverName= 'localhost';
       $userName= 'root';
@@ -11,6 +11,8 @@
       catch(PDOException $e){
         echo "Failed to establish connection" . $e->getMessage();
       }
+*/
+      require'db_connection.php';
 
       if( isset($_POST) && (!empty($_POST))){
 		var_dump($_POST);

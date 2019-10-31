@@ -1,7 +1,4 @@
 <?php
-session_start ();
-
-if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 
       $databaseName= 'reunion_island';
       $serverName= 'localhost';

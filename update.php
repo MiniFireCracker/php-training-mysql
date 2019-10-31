@@ -3,6 +3,8 @@ session_start ();
 
 if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 
+	require'db_connection.php';
+/*
       $databaseName= 'reunion_island';
       $serverName= 'localhost';
       $userName= 'root';
@@ -14,6 +16,7 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
       catch(PDOException $e){
         echo "Failed to establish connection" . $e->getMessage();
       }
+*/
       var_dump($_GET);
 
       $stmt= $pdo->prepare("SELECT * FROM hiking WHERE id=? ; ");
@@ -117,22 +120,15 @@ $stmt->execute();
 
 		<div>
 			<label for="difficulty">Difficulté</label>
-			<select name="difficulty">
-				<option value='<?= $selectedTrack['difficulty']?>' selected='selected'> <?= $selectedTrack['difficulty'] ?> </option>
-				<?php $possibleOptionValue=["très facile", "facile", "moyen","difficile","très difficile"];
-					function findAllValuesExceptTheOneInUse($val){
-						return $val !== $selectedTrack['difficulty'];
-					}
+			<select name="difficulty" value='<?= $selectedTrack['difficulty']?>'>
+				<option name="difficulty" value="très facile">très facile</option>
+				<option name="difficulty" value="facile">facile</option>
+				<option name="difficulty" value="moyen">moyen</option>
+				<option name="difficulty" value="difficile">difficile</option>
+				<option name="difficulty" value="très difficile">très difficile</option>
 
-					$otherValues= array_filter($possibleOptionValue, findAllValuesExceptTheOneInUse);
-					print_r($otherValues);
 
-					foreach($otherValues as $otherValue):
-				 ?>
-				 <option value=<?= $otherValue ?> > <?= $otherValue  ?> </option>
-				
-
-				<?php endforeach; ?>
+			
 			</select>
 		</div>
 		

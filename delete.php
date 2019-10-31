@@ -3,8 +3,8 @@ session_start ();
 
 if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
 
-
-      $databaseName= 'reunion_island';
+require'db_connection.php';
+ /*     $databaseName= 'reunion_island';
       $serverName= 'localhost';
       $userName= 'root';
       $password= 'root';
@@ -15,6 +15,7 @@ if (isset($_SESSION['mail']) && isset($_SESSION['firstname'])) {
       catch(PDOException $e){
         echo "Failed to establish connection" . $e->getMessage();
       }
+*/
 
       //var_dump($_GET);
       //echo $_GET['id'];
